@@ -32,7 +32,7 @@ if (isset($_POST['register'])){
     if (empty($password2) or $password !== $password2) {
         $password2_err = 'Repeat your password';
     //if (strlen($password) < 6) {$password_err = 'Password is at least 6 characters long';}
-        
+
 }
 echo '<pre>';
 var_dump($_POST);
