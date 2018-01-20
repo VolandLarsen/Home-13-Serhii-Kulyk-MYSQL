@@ -19,12 +19,14 @@ if (isset($_POST['register'])){
         $category = $mysqli->real_escape_string($_POST['category']);
         $sql = $mysqli->query("INSERT INTO user_data (login, password, name, lastname, sex, hobbies, birth_date, card, personal_info, category, age)"
         . "VALUES ('$login', '$password', '$firstname', '$lastname', '$male', '$hobbies', '$birth', '$card', '$about', '$category', $age)");
+        mysqli_free_result($sql);
     }
+
 }
 echo '<pre>';
 var_dump($_POST);
 echo '</pre>';
-
+mysqli_close($link);
 ?>
 <label for="register">Registration form</label>
 <form class="register" method="post" name="registration" action="<?php echo $_SERVER['PHP_SELF']; ?>">
