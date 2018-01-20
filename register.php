@@ -21,19 +21,6 @@ if (isset($_POST['register'])){
         . "VALUES ('$login', '$password', '$firstname', '$lastname', '$male', '$hobbies', '$birth', '$card', '$about', '$category', $age)");
     }
 }
-    if (empty($login)) {
-        $ulogin_err = 'Enter your login.';
-    }
-
-    if (empty($password)) {
-        $password_err = 'Enter password!';
-    }
-
-    if (empty($password2) or $password !== $password2) {
-        $password2_err = 'Repeat your password';
-    //if (strlen($password) < 6) {$password_err = 'Password is at least 6 characters long';}
-
-}
 echo '<pre>';
 var_dump($_POST);
 echo '</pre>';
@@ -44,14 +31,14 @@ echo '</pre>';
     <ul>
         <li><label for="name">Enter your name</label></li>
         <li><input type="text" class="name" name="name" id="name" required></li>
-        <? if ($firstname_err) :
-            echo "<p class='err'>$firstname_err</p>";
+        <? if (empty($firstname)) :
+            echo 'Enter your name';
         endif;
         ?>
         <li><label for="last_name">Enter your last name</label></li>
         <li><input type="text" class="last_name" name="last_name" id="last_name" required></li>
-        <? if ($lastname_err) :
-            echo "<p class='err'>$lastname_err</p>";
+        <? if (empty($lastname)) :
+            echo 'Enter your last name';
         endif;
         ?>
         <li><label for="age">Enter your age</label></li>
@@ -75,26 +62,26 @@ echo '</pre>';
 
         <li><label for="login">Login</label></li>
         <li><input type="text" class="login" id="login" name="login" required></li>
-        <? if ($login_err) :
-            echo "<p class='err'>$login_err</p>";
+        <? if (empty($login)) :
+            echo 'Enter your login.';
         endif;
         ?>
         <li><label for="password">Password</label></li>
         <li><input type="password" class="password" id="password" name="password" required></li>
-        <? if ($password_err) :
-            echo "<p class='err'>$password_err</p>";
+        <? if (empty($password)) :
+            echo 'Enter your password';
         endif;
         ?>
         <li><label for="password2">Confirm password</label></li>
         <li><input type="password" class="password2" id="password2" name="password2" required></li>
-        <? if ($password2err) :
-            echo "<p class='err'>$password2_err</p>";
+        <? if (empty($password2)) :
+            echo 'Confirm your password';
         endif;
         ?>
         <li><label for="card">Card number</label></li>
-        <li><input type="text" class="card" id="card" name="card" required></li>
+        <li><input type="text" class="card" id="card" name="card" minlength="16" maxlength="16" required></li>
         <li><label for="about">Enter info about yourself</label></li>
-        <li><textarea class="about" id="about" name="about"></textarea></li>
+        <li><textarea cols="30" rows="15" class="about" id="about" name="about"></textarea></li>
         <li><label for="category">Choose your category</label></li>
         <li>
             <select class="category[]" id="category" name="category">
@@ -108,3 +95,7 @@ echo '</pre>';
         <li><input type="submit" class="submit" name="register" value="REGISTER"></li>
     </ul>
 </form>
+// I can't check error messeges because of problem
+//Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 7168 bytes) in register.php
+// I haven't found a way to solve this error
+// But before this error form worked, it upload data into user_data database...

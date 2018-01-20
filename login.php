@@ -26,7 +26,7 @@ echo '</pre>';
 </form>
 <?php
 if ($row['login'] == $login && $row['password'] == $password){
-echo 'LOGIN SUCCESS! WELCOM TO FRONTEND!';
+echo 'LOGIN SUCCESS! WELCOME TO FRONTEND!';
 } else {
 echo 'Wrong password or login';
 }
