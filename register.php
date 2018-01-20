@@ -97,7 +97,7 @@ mysqli_close($link);
         <li><input type="submit" class="submit" name="register" value="REGISTER"></li>
     </ul>
 </form>
-// I can't check error messeges because of problem
-//Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 7168 bytes) in register.php
-// I haven't found a way to solve this error
-// But before this error form worked, it upload data into user_data database...
+<!-- I can't check error messeges because of problem
+ Fatal error: Allowed memory size of 1610612736 bytes exhausted (tried to allocate 7168 bytes) in register.php
+ I haven't found a way to solve this error
+ But before this error form worked, it upload data into user_data database...-->
